@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Acerca de — El Pacto Lvdico"
+  description="Conoce la misión de El Pacto Lúdico: preservar la tradición del juego, la historia y el conocimiento."
+  ogType="website"
+>
+  <div class="pt-32 pb-24 min-h-screen bg-background relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="fixed top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-primary scale-150 transform translate-x-1/4 -translate-y-1/4">
+        <path d="M50 0 C60 40 100 50 100 50 C60 60 50 100 50 100 C40 60 0 50 0 50 C40 40 50 0 50 0 Z" fill="currentColor" />
+      </svg>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 relative z-10">
+      <!-- Header -->
+      <header class="mb-16 text-center">
+        <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
+          Acerca de
+        </h1>
+        <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
+      </header>
+
+      <div class="space-y-12">
+        <section>
+          <p class="text-foreground/80 text-lg font-light leading-relaxed">
+            <strong class="text-primary">El Pacto Lúdico</strong> nace de la convicción de que el juego —desde las tablillas de Sumeria hasta los tableros modernos— es uno de los actos más profundos de la civilización humana.
+          </p>
+        </section>
+
+        <section>
+          <p class="text-foreground/80 text-lg font-light leading-relaxed">
+            Nuestra misión es preservar y celebrar la tradición del juego, la historia y el conocimiento para las generaciones venideras. Creemos que en la mesa de juego, como en el senado, se revelan los verdaderos temperamentos de los hombres.
+          </p>
+        </section>
+
+        <section>
+          <p class="text-foreground/80 text-lg font-light leading-relaxed">
+            A través de nuestros pilares —juegos de mesa, juegos de rol, arsenal lingüístico y educación lúdica— construimos un espacio donde la rigurosidad intelectual se encuentra con el placer del juego.
+          </p>
+        </section>
+
+        <div class="text-center pt-8">
+          <p class="text-foreground/40 text-sm italic">
+            Sección en desarrollo. Próximamente se añadirán más detalles sobre nuestra historia y equipo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

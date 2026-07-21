@@ -1,14 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-const entries = await getCollection('educacion');
-entries.sort((a, b) => a.data.entrada - b.data.entrada);
 ---
 
 <Layout
-  title="Educación — Arsenal de Precisión Lingüística"
-  description="Arsenal de precisión lingüística. Vocabulario culto para pensar con rigor."
+  title="Educación — El Pacto Lvdico"
+  description="El juego como herramienta de aprendizaje. Talleres, seminarios y academias lúdicas."
   ogType="website"
 >
   <div class="pt-32 pb-24 min-h-screen bg-background relative overflow-hidden">
@@ -23,55 +19,52 @@ entries.sort((a, b) => a.data.entrada - b.data.entrada);
       <!-- Header -->
       <header class="mb-16 text-center">
         <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
-          Arsenal de Precisión Lingüística
+          Educación
         </h1>
         <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
-        <p class="text-foreground/60 text-lg font-light">
-          Vocabulario culto para pensar con rigor. Cada palabra es una herramienta de precisión.
+        <p class="text-foreground/60 text-lg font-light leading-relaxed max-w-2xl mx-auto">
+          El juego como herramienta de aprendizaje. Talleres, seminarios y academias lúdicas para formar mentes brillantes.
         </p>
       </header>
 
-      {entries.length === 0 ? (
-        <div class="text-center py-20">
-          <p class="text-foreground/40 text-lg">No hay entradas disponibles aún.</p>
+      <!-- Content -->
+      <div class="space-y-12">
+        <section class="bg-card border border-border p-10">
+          <h2 class="font-display text-2xl text-primary mb-4 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Talleres
+          </h2>
+          <p class="text-foreground/70 font-light leading-relaxed">
+            Experiencias prácticas donde el juego se convierte en el medio para explorar conceptos complejos. Diseñados para grupos reducidos que buscan aprendizaje profundo a través de la interacción y la experimentación.
+          </p>
+        </section>
+
+        <section class="bg-card border border-border p-10">
+          <h2 class="font-display text-2xl text-primary mb-4 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+            Seminarios
+          </h2>
+          <p class="text-foreground/70 font-light leading-relaxed">
+            Encuentros de reflexión y análisis sobre el poder transformador del juego. Un espacio donde teoría y práctica convergen para entender cómo el lúdico moldea el pensamiento, la creatividad y las relaciones humanas.
+          </p>
+        </section>
+
+        <section class="bg-card border border-border p-10">
+          <h2 class="font-display text-2xl text-primary mb-4 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+            Academias Lúdicas
+          </h2>
+          <p class="text-foreground/70 font-light leading-relaxed">
+            Programas de formación continua que combinan el estudio riguroso con la práctica del juego. Una academia donde cada sesión es una aventura de descubrimiento, y cada descubrimiento se ancla en el juego.
+          </p>
+        </section>
+
+        <div class="text-center pt-8">
+          <p class="text-foreground/40 text-sm italic">
+            Sección en desarrollo. Próximamente se añadirán programas, calendarios y detalles de inscripción.
+          </p>
         </div>
-      ) : (
-        <div class="grid gap-6">
-          {entries.map((entry) => (
-            <a
-              href={`/educacion/${entry.id}`}
-              class="group block bg-card border border-border p-8 hover:border-primary/50 transition-colors duration-300"
-            >
-              <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                <div class="flex items-center gap-3 shrink-0">
-                  <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50">
-                    Entrada #{entry.data.entrada}
-                  </span>
-                </div>
-                <div class="flex-1">
-                  <h2 class="font-display text-3xl text-primary mb-2 group-hover:text-foreground transition-colors">
-                    {entry.data.palabra}
-                  </h2>
-                  <div class="flex flex-wrap items-center gap-4 text-foreground/60">
-                    <span class="text-lg italic bg-card px-3 py-1 rounded-sm border border-border">
-                      {entry.data.pronunciacion}
-                    </span>
-                    <span class="text-sm tracking-wider uppercase">
-                      {entry.data.categoria}
-                    </span>
-                  </div>
-                  <p class="mt-3 text-foreground/70 text-sm leading-relaxed">
-                    {entry.data.significado[0]}
-                  </p>
-                </div>
-                <div class="shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
+      </div>
     </div>
   </div>
 </Layout>

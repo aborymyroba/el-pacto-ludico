@@ -5,7 +5,6 @@ import PillarCard from '../components/PillarCard.astro';
 const icons = {
   dices: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M12 12h.01"/><path d="M8 8h.01"/><path d="M12 16h.01"/><path d="M8 16h.01"/><path d="M8 12h.01"/></svg>',
   sword: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/></svg>',
-  bookOpen: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>',
   library: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
   chevronRight: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
   circleDollar: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary mx-auto mb-8 opacity-50"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-4-4"/></svg>',
@@ -13,8 +12,8 @@ const icons = {
 ---
 
 <Layout
-  title="El Pacto Lvdico — Juegos de Mesa, Rol, Literatura y Educación"
-  description="Explora las fronteras de la imaginación a través de los juegos de mesa, la narrativa de rol, la literatura clásica y la educación lúdica."
+  title="El Pacto Lvdico — Juegos de Mesa, Rol y Educación"
+  description="Explora las fronteras de la imaginación a través de los juegos de mesa, la narrativa de rol y la educación lúdica."
   ogType="website"
 >
   <!-- Hero Section -->
@@ -42,8 +41,7 @@ const icons = {
         </h1>
         <p class="text-lg md:text-xl text-foreground/70 leading-relaxed mb-10 max-w-lg font-light">
           Explora las fronteras de la imaginación a través de los juegos de
-          mesa, la narrativa de rol, la literatura clásica y la educación
-          lúdica.
+          mesa, la narrativa de rol y la educación lúdica.
         </p>
         <div class="flex flex-wrap gap-4">
           <a
@@ -68,16 +66,16 @@ const icons = {
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-2xl mx-auto mb-20">
         <h2 class="font-display text-3xl md:text-5xl mb-6 text-foreground">
-          Los Cuatro Pilares
+          Los Tres Pilares
         </h2>
         <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
         <p class="text-foreground/70 text-lg font-light leading-relaxed">
-          Nuestro pacto se sostiene sobre cuatro disciplinas fundamentales,
+          Nuestro pacto se sostiene sobre tres disciplinas fundamentales,
           cada una diseñada para enriquecer la mente y el espíritu.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="grid md:grid-cols-3 gap-8">
         <PillarCard
           id="mesa"
           title="Juegos de Mesa"
@@ -91,13 +89,6 @@ const icons = {
           icon={icons.sword}
           description="Narrativa compartida. Forja tu propio destino en mundos de fantasía, ciencia ficción y misterio."
           image="/images/pillar-rol.jpg"
-        />
-        <PillarCard
-          id="literatura"
-          title="Literatura"
-          icon={icons.bookOpen}
-          description="Las crónicas del pasado y ficciones del futuro. Textos que inspiran nuestras aventuras."
-          image="/images/pillar-literatura.jpg"
         />
         <PillarCard
           id="educacion"
@@ -138,7 +129,7 @@ const icons = {
     "@type": "Organization",
     "name": "El Pacto Lvdico",
     "url": "https://pactolvdico.com",
-    "description": "Explora las fronteras de la imaginación a través de los juegos de mesa, la narrativa de rol, la literatura clásica y la educación lúdica.",
+    "description": "Explora las fronteras de la imaginación a través de los juegos de mesa, la narrativa de rol y la educación lúdica.",
     "logo": "https://pactolvdico.com/images/hero-colosseum.jpg",
     "contactPoint": {
       "@type": "ContactPoint",

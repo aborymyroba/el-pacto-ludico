@@ -67,10 +67,12 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
 
         <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
+          <a href="/" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Inicio</a>
+          <a href="/arsenal" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Arsenal</a>
           <a href="/#mesa" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Juegos de mesa</a>
           <a href="/#rol" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Juegos de Rol</a>
-          <a href="/#literatura" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Literatura</a>
           <a href="/educacion" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Educación</a>
+          <a href="/acerca-de" class="text-sm tracking-widest uppercase font-medium text-foreground/80 hover:text-primary transition-colors duration-300">Acerca de</a>
         </div>
 
         <!-- Mobile Menu Toggle -->
@@ -90,10 +92,12 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
       id="mobile-menu"
       class="fixed inset-0 bg-background/95 backdrop-blur-xl z-40 transition-transform duration-500 flex flex-col items-center justify-center gap-8 -translate-y-full md:hidden"
     >
+      <a href="/" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Inicio</a>
+      <a href="/arsenal" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Arsenal</a>
       <a href="/#mesa" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Juegos de mesa</a>
       <a href="/#rol" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Juegos de Rol</a>
-      <a href="/#literatura" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Literatura</a>
       <a href="/educacion" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Educación</a>
+      <a href="/acerca-de" class="mobile-menu-link font-display text-2xl tracking-widest uppercase text-foreground hover:text-primary transition-colors">Acerca de</a>
     </div>
 
     <main class="flex-1">
@@ -121,10 +125,11 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
               Secciones
             </h4>
             <ul class="space-y-4">
+              <li><a href="/arsenal" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Arsenal</a></li>
               <li><a href="/#mesa" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Juegos de mesa</a></li>
               <li><a href="/#rol" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Juegos de Rol</a></li>
-              <li><a href="/#literatura" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Literatura</a></li>
               <li><a href="/educacion" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Educación</a></li>
+              <li><a href="/acerca-de" class="text-foreground/70 hover:text-primary transition-colors text-sm uppercase tracking-wider">Acerca de</a></li>
             </ul>
           </div>
 
