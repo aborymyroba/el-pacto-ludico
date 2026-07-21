@@ -1,0 +1,22 @@
+{
+  "name": "astro-temp",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@esbuild/win32-x64": "^0.28.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.3",
+    "shiki": "^4.3.1",
+    "tailwindcss": "^4.3.3"
+  }
+}

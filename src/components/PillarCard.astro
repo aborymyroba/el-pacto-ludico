@@ -1,0 +1,42 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image: string;
+}
+
+const { id, title, description, icon, image } = Astro.props;
+const href = id === 'educacion' ? '/educacion' : `/#${id}`;
+---
+
+<div
+  id={id}
+  class="group relative bg-card border border-border overflow-hidden flex flex-col h-[480px] transition-colors duration-500 hover:border-primary/50 scroll-mt-32"
+>
+  <div class="h-48 relative overflow-hidden">
+    <div class="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale-[50%] group-hover:grayscale-0"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent z-10"></div>
+  </div>
+
+  <div class="p-8 flex-1 flex flex-col relative z-20 -mt-8">
+    <div class="w-12 h-12 bg-background border border-border flex items-center justify-center rounded-full mb-6 text-primary shadow-lg transform group-hover:-translate-y-2 transition-transform duration-300" set:html={icon} />
+    <h3 class="font-display text-2xl text-foreground mb-4">{title}</h3>
+    <p class="text-foreground/60 leading-relaxed font-light mb-6 flex-1 text-sm">
+      {description}
+    </p>
+    <a
+      href={href}
+      class="inline-flex items-center gap-2 text-primary text-xs uppercase tracking-widest font-semibold opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+    >
+      Explorar
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </a>
+  </div>
+</div>

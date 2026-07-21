@@ -1,0 +1,10 @@
+{
+  "description": "Explore and promote tabletop games, role-playing games, literature, and education with a classic Roman aesthetic, engaging enthusiasts and learners alike.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

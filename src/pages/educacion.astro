@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('educacion');
+entries.sort((a, b) => a.data.entrada - b.data.entrada);
+---
+
+<Layout
+  title="Educación — Arsenal de Precisión Lingüística"
+  description="Arsenal de precisión lingüística. Vocabulario culto para pensar con rigor."
+  ogType="website"
+>
+  <div class="pt-32 pb-24 min-h-screen bg-background relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="fixed top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-primary scale-150 transform translate-x-1/4 -translate-y-1/4">
+        <path d="M50 0 C60 40 100 50 100 50 C60 60 50 100 50 100 C40 60 0 50 0 50 C40 40 50 0 50 0 Z" fill="currentColor" />
+      </svg>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <!-- Header -->
+      <header class="mb-16 text-center">
+        <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
+          Arsenal de Precisión Lingüística
+        </h1>
+        <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-foreground/60 text-lg font-light">
+          Vocabulario culto para pensar con rigor. Cada palabra es una herramienta de precisión.
+        </p>
+      </header>
+
+      {entries.length === 0 ? (
+        <div class="text-center py-20">
+          <p class="text-foreground/40 text-lg">No hay entradas disponibles aún.</p>
+        </div>
+      ) : (
+        <div class="grid gap-6">
+          {entries.map((entry) => (
+            <a
+              href={`/educacion/${entry.id}`}
+              class="group block bg-card border border-border p-8 hover:border-primary/50 transition-colors duration-300"
+            >
+              <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                <div class="flex items-center gap-3 shrink-0">
+                  <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50">
+                    Entrada #{entry.data.entrada}
+                  </span>
+                </div>
+                <div class="flex-1">
+                  <h2 class="font-display text-3xl text-primary mb-2 group-hover:text-foreground transition-colors">
+                    {entry.data.palabra}
+                  </h2>
+                  <div class="flex flex-wrap items-center gap-4 text-foreground/60">
+                    <span class="text-lg italic bg-card px-3 py-1 rounded-sm border border-border">
+                      {entry.data.pronunciacion}
+                    </span>
+                    <span class="text-sm tracking-wider uppercase">
+                      {entry.data.categoria}
+                    </span>
+                  </div>
+                  <p class="mt-3 text-foreground/70 text-sm leading-relaxed">
+                    {entry.data.significado[0]}
+                  </p>
+                </div>
+                <div class="shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

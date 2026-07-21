@@ -1,0 +1,56 @@
+Arquitectura inicial del sitio El Pacto Lúdico
+Objetivo
+
+Desarrollar un sitio web cuyo propósito sea reunir publicaciones relacionadas con el aprendizaje, el pensamiento crítico y el juego como herramienta intelectual.
+
+El sitio debe ser sencillo, limpio y centrado en la lectura. La prioridad absoluta es el contenido.
+
+Identidad
+
+El nombre del sitio será El Pacto Lúdico y no debe modificarse.
+
+No es un blog dedicado exclusivamente a un tema, sino un espacio editorial que alberga distintos proyectos relacionados entre sí.
+
+Estructura inicial
+
+En esta primera etapa, el sitio estará compuesto únicamente por las siguientes secciones principales:
+
+Inicio
+Arsenal de precisión lingüística
+Juegos de mesa
+Juegos de rol
+Educación
+Acerca de
+
+No deben crearse subsecciones, categorías internas ni estructuras jerárquicas adicionales. Cada sección actuará inicialmente como un contenedor simple de publicaciones.
+
+La organización deberá mantenerse deliberadamente plana hasta que el crecimiento del contenido justifique una subdivisión.
+
+Página de inicio
+
+La página principal debe mostrar:
+
+Una breve presentación de El Pacto Lúdico.
+Las publicaciones más recientes.
+Acceso claro a cada una de las secciones principales.
+
+Debe evitarse una portada recargada.
+
+Filosofía editorial
+
+El contenido constituye el centro del proyecto.
+
+El diseño debe servir a la lectura y nunca competir con ella.
+
+Cada publicación pertenece a una única sección principal.
+
+Cuando alguna sección acumule suficiente contenido como para dificultar la navegación, podrá subdividirse en una etapa posterior. Hasta entonces, la estructura permanecerá intencionadamente simple.
+
+Criterios generales
+Priorizar claridad sobre complejidad.
+Priorizar permanencia sobre tendencias.
+Priorizar lectura sobre elementos visuales.
+Evitar funcionalidades innecesarias durante las primeras etapas del proyecto.
+Diseñar una estructura que pueda crecer sin requerir reorganizaciones frecuentes.
+
+La evolución del sitio debe responder al crecimiento real del contenido y no a previsiones futuras.
