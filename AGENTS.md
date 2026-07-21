@@ -1,3 +1,12 @@
+## Project Workflow
+
+This project has two clear roles:
+
+- **Technical implementation** (this session): Build the site structure, components, routing, styling, SEO, performance. Code only.
+- **Creative content** (the creator): Copy, text, descriptions, philosophy, brand voice, visual direction. Content only.
+
+**Rule:** Do NOT write final copy, creative text, or brand messaging. When content is needed in a component or page, use placeholder text or ask the user to provide it. The creator provides the content; this session implements it.
+
 ## Development
 
 When starting the dev server, use background mode:

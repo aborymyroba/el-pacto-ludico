@@ -1,14 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PillarCard from '../components/PillarCard.astro';
 
-const icons = {
-  dices: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M16 8h.01"/><path d="M12 12h.01"/><path d="M8 8h.01"/><path d="M12 16h.01"/><path d="M8 16h.01"/><path d="M8 12h.01"/></svg>',
-  sword: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" x2="19" y1="19" y2="13"/><line x1="16" x2="20" y1="16" y2="20"/><line x1="19" x2="21" y1="21" y2="19"/></svg>',
-  library: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
-  chevronRight: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>',
-  circleDollar: '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary mx-auto mb-8 opacity-50"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-4-4"/></svg>',
-};
+const chevronRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
+const circleDollar = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary mx-auto mb-8 opacity-50"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-4-4"/></svg>';
+
+const pillars = [
+  {
+    title: 'La Orden',
+    subtitle: 'Un Colectivo con Propósito',
+    description: 'Los juegos de mesa y de rol no son solo un pasatiempo, sino una lucha colectiva para atender una necesidad que los medios ordinarios no cubren. Esta sociedad es un espacio de unión sin ánimo de lucro.',
+    phrase: 'Una sociedad civil creada para conservar, difundir y hacer accesible la cultura del juego.',
+  },
+  {
+    title: 'Acceso Libre',
+    subtitle: 'Espacio Comunitario',
+    description: 'Buscamos democratizar el entretenimiento y el aprendizaje. La orden busca garantizar un lugar gratuito donde cualquiera pueda jugar, proponer ideas y compartir con otros.',
+    phrase: 'Un espacio gratuito de encuentro, juego y creación para todas las personas.',
+  },
+  {
+    title: 'El Juego en Todas las Etapas',
+    subtitle: 'Más Allá de la Niñez',
+    description: 'Desmitificar la idea de que "jugar es solo para niños". El juego es aprendizaje estructurado desde la infancia y una herramienta fundamental de relajación, desconexión y bienestar para los adultos.',
+    phrase: 'Herramienta de aprendizaje, desconexión y bienestar a cualquier edad.',
+  },
+  {
+    title: 'Imaginación y Conexión Humana',
+    subtitle: 'Creatividad y Empatía',
+    description: 'Inspirado en la cita de Schiller: "El hombre solo es verdaderamente humano cuando juega". El juego estimula la capacidad de fantasear, crear mundos propios y conectar profundamente con la gente.',
+    phrase: 'Creatividad, narrativa, aprendizaje continuo y empatía social.',
+  },
+];
 ---
 
 <Layout
@@ -48,7 +69,7 @@ const icons = {
             href="#explorar"
             class="px-8 py-4 bg-primary text-primary-foreground font-display tracking-widest uppercase text-sm font-semibold hover:bg-white hover:text-primary-foreground transition-colors duration-300 flex items-center gap-2"
           >
-            Descubrir <span set:html={icons.chevronRight} />
+            Descubrir <span set:html={chevronRight} />
           </a>
           <a
             href="#nosotros"
@@ -66,37 +87,27 @@ const icons = {
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center max-w-2xl mx-auto mb-20">
         <h2 class="font-display text-3xl md:text-5xl mb-6 text-foreground">
-          Los Tres Pilares
+          Los Cuatro Pilares
         </h2>
         <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
         <p class="text-foreground/70 text-lg font-light leading-relaxed">
-          Nuestro pacto se sostiene sobre tres disciplinas fundamentales,
-          cada una diseñada para enriquecer la mente y el espíritu.
+          Los cimientos sobre los que se sostiene El Pacto Lvdico.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <PillarCard
-          id="mesa"
-          title="Juegos de Mesa"
-          icon={icons.dices}
-          description="Estrategia, táctica y convivencia. Una colección curada de experiencias sobre el tablero."
-          image="/images/pillar-mesa.jpg"
-        />
-        <PillarCard
-          id="rol"
-          title="Juegos de Rol"
-          icon={icons.sword}
-          description="Narrativa compartida. Forja tu propio destino en mundos de fantasía, ciencia ficción y misterio."
-          image="/images/pillar-rol.jpg"
-        />
-        <PillarCard
-          id="educacion"
-          title="Educación"
-          icon={icons.library}
-          description="El juego como herramienta de aprendizaje. Talleres, seminarios y academias lúdicas."
-          image="/images/pillar-educacion.jpg"
-        />
+      <div class="grid md:grid-cols-2 gap-8">
+        {pillars.map((pillar) => (
+          <div class="bg-card border border-border p-10 flex flex-col hover:border-primary/50 transition-colors duration-500">
+            <h3 class="font-display text-2xl text-primary mb-2">{pillar.title}</h3>
+            <p class="text-xs uppercase tracking-[0.2em] text-foreground/40 mb-6">{pillar.subtitle}</p>
+            <p class="text-foreground/70 leading-relaxed font-light mb-8 flex-1">
+              {pillar.description}
+            </p>
+            <blockquote class="border-l-2 border-primary/40 pl-4 text-foreground/50 italic text-sm">
+              "{pillar.phrase}"
+            </blockquote>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -112,7 +123,7 @@ const icons = {
       <div class="absolute inset-0 bg-background/90"></div>
     </div>
     <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <span set:html={icons.circleDollar} />
+      <span set:html={circleDollar} />
       <blockquote class="font-display text-3xl md:text-5xl leading-tight text-foreground mb-8">
         "En la mesa de juego, como en el senado, se revelan los verdaderos
         temperamentos de los hombres."
