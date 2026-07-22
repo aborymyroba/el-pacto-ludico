@@ -1,9 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-const entries = await getCollection('educacion');
-entries.sort((a, b) => a.data.entrada - b.data.entrada);
 ---
 
 <Layout
@@ -21,57 +17,64 @@ entries.sort((a, b) => a.data.entrada - b.data.entrada);
 
     <div class="max-w-4xl mx-auto px-6 relative z-10">
       <!-- Header -->
-      <header class="mb-16 text-center">
+      <header class="mb-8 text-center">
         <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
           Arsenal de Precisión Lingüística
         </h1>
-        <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
-        <p class="text-foreground/60 text-lg font-light">
-          Vocabulario culto para pensar con rigor. Cada palabra es una herramienta de precisión.
-        </p>
+        <div class="w-16 h-1 bg-primary mx-auto mb-8"></div>
+
+        <!-- Tab Navigation -->
+        <nav class="flex justify-center gap-8 border-b border-border pb-4">
+          <a href="/arsenal" class="text-sm tracking-widest uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px]">
+            Prólogo
+          </a>
+          <a href="/arsenal/entregas" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-foreground transition-colors pb-4 -mb-[18px]">
+            Entregas
+          </a>
+          <a href="/arsenal/constelaciones" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-foreground transition-colors pb-4 -mb-[18px]">
+            Constelaciones
+          </a>
+        </nav>
       </header>
 
-      {entries.length === 0 ? (
-        <div class="text-center py-20">
-          <p class="text-foreground/40 text-lg">No hay entradas disponibles aún.</p>
-        </div>
-      ) : (
-        <div class="grid gap-6">
-          {entries.map((entry) => (
-            <a
-              href={`/arsenal/${entry.id}`}
-              class="group block bg-card border border-border p-8 hover:border-primary/50 transition-colors duration-300"
-            >
-              <div class="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-                <div class="flex items-center gap-3 shrink-0">
-                  <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50">
-                    Entrada #{entry.data.entrada}
-                  </span>
-                </div>
-                <div class="flex-1">
-                  <h2 class="font-display text-3xl text-primary mb-2 group-hover:text-foreground transition-colors">
-                    {entry.data.palabra}
-                  </h2>
-                  <div class="flex flex-wrap items-center gap-4 text-foreground/60">
-                    <span class="text-lg italic bg-card px-3 py-1 rounded-sm border border-border">
-                      {entry.data.pronunciacion}
-                    </span>
-                    <span class="text-sm tracking-wider uppercase">
-                      {entry.data.categoria}
-                    </span>
-                  </div>
-                  <p class="mt-3 text-foreground/70 text-sm leading-relaxed">
-                    {entry.data.significado[0]}
-                  </p>
-                </div>
-                <div class="shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
+      <!-- Prólogo Content -->
+      <div class="max-w-4xl mx-auto text-left mt-12 space-y-6 text-foreground/60 font-light leading-relaxed">
+        <h2 class="font-display text-2xl md:text-3xl text-foreground text-center mb-8">
+          Una palabra para observar
+        </h2>
+
+        <p>
+          Hay proyectos que nacen con un plan. Este nació con una conversación.
+        </p>
+
+        <p>
+          Durante mucho tiempo pensé que ampliar el vocabulario consistía en aprender palabras nuevas. Con el tiempo comprendí que la verdadera riqueza no está en&nbsp;la cantidad de palabras que conocemos, sino en&nbsp;las distinciones que somos capaces de hacer con&nbsp;ellas. Una palabra precisa no embellece únicamente el discurso: también ordena el pensamiento. Ese descubrimiento dio origen al <em>Arsenal de precisión lingüística</em>.
+        </p>
+
+        <p>
+          Este espacio no pretende ser un diccionario ni un catálogo de palabras extrañas. Aspira a convertirse en una colección cuidadosamente seleccionada de palabras que permiten comprender la realidad con mayor claridad, nombrarla con mayor exactitud y&nbsp;comunicarla con mayor honestidad. Cada entrega gira en torno a una sola palabra. No para memorizar una definición, sino para descubrir una distinción que, una vez incorporada, transforma silenciosamente nuestra manera de observar el mundo.
+        </p>
+
+        <p>
+          El ejercicio que propongo es deliberadamente sencillo. Leer una entrada, conservar esa palabra durante el día y permitir que acompañe la mirada. Quizá aparezca en una conversación, en una novela, en una sentencia judicial, en una noticia o en una experiencia cotidiana. Cuando eso ocurre, la palabra deja de ser un elemento del vocabulario para convertirse en una herramienta del pensamiento. Poco a poco, las distintas entradas empiezan a relacionarse entre sí y&nbsp;el <em>Arsenal</em> deja de ser una colección de palabras para convertirse en un conjunto de ideas que dialogan unas con otras.
+        </p>
+
+        <p>
+          Esta publicación nace mientras el libro continúa construyéndose. No pretende sustituirlo. Más bien abre una ventana al taller donde esa construcción tiene lugar. Aquí irán apareciendo nuevas palabras, relaciones inesperadas entre ellas, breves interludios dedicados a conceptos que merecen una pausa y&nbsp;algunas reflexiones surgidas durante el propio proceso editorial. Más que asistir al resultado final, el lector está invitado a acompañar el crecimiento de una obra que todavía permanece viva.
+        </p>
+
+        <p>
+          Quisiera añadir una nota sobre el método, no como una curiosidad técnica, sino como un acto de transparencia. El <em>Arsenal de precisión lingüística</em> es fruto de una colaboración entre un autor y&nbsp;una inteligencia artificial. No se trata de delegar el pensamiento, sino de explorar una forma distinta de construir conocimiento. Durante este proceso, la inteligencia artificial ha actuado como interlocutor permanente: ayudando a preservar la continuidad del proyecto, a contrastar ideas, a revisar estructuras y&nbsp;a descubrir relaciones que quizá habrían pasado inadvertidas. La dirección intelectual, las decisiones editoriales y&nbsp;la responsabilidad sobre la obra corresponden en todo momento a su autor. He querido mantener visible este método porque creo que representa una posibilidad pedagógica que merece ser explorada: aquella en la que la tecnología no reemplaza el criterio humano, sino que lo acompaña, lo desafía y&nbsp;contribuye a desarrollarlo.
+        </p>
+
+        <p>
+          Si decides acompañarme en este camino, no encontrarás listas interminables de palabras ni lecciones apresuradas. Encontrarás una conversación pausada alrededor del lenguaje y&nbsp;de la forma en que este modela nuestra manera de pensar. La próxima entrega incorporará la primera palabra al <em>Arsenal</em>. Será solo una. Y será suficiente, porque una palabra observada con atención puede transformar mucho más que cien palabras aprendidas de memoria.
+        </p>
+
+        <p class="text-center text-foreground/80 mt-12">
+          Bienvenido al <em>Arsenal de precisión lingüística</em>.
+        </p>
+      </div>
     </div>
   </div>
 </Layout>

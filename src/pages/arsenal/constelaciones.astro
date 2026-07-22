@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout
+  title="Constelaciones — Arsenal de Precisión Lingüística"
+  description="Constelaciones del Arsenal de precisión lingüística."
+  ogType="website"
+>
+  <div class="pt-32 pb-24 min-h-screen bg-background relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="fixed top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-primary scale-150 transform translate-x-1/4 -translate-y-1/4">
+        <path d="M50 0 C60 40 100 50 100 50 C60 60 50 100 50 100 C40 60 0 50 0 50 C40 40 50 0 50 0 Z" fill="currentColor" />
+      </svg>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <!-- Header -->
+      <header class="mb-8 text-center">
+        <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
+          Arsenal de Precisión Lingüística
+        </h1>
+        <div class="w-16 h-1 bg-primary mx-auto mb-8"></div>
+
+        <!-- Tab Navigation -->
+        <nav class="flex justify-center gap-8 border-b border-border pb-4">
+          <a href="/arsenal" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-foreground transition-colors pb-4 -mb-[18px]">
+            Prólogo
+          </a>
+          <a href="/arsenal/entregas" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-foreground transition-colors pb-4 -mb-[18px]">
+            Entregas
+          </a>
+          <a href="/arsenal/constelaciones" class="text-sm tracking-widest uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px]">
+            Constelaciones
+          </a>
+        </nav>
+      </header>
+
+      <!-- Placeholder Content -->
+      <div class="mt-12 text-center py-20">
+        <p class="text-foreground/40 text-lg">Próximamente.</p>
+      </div>
+    </div>
+  </div>
+</Layout>
