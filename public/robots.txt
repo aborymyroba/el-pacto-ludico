@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pactolvdico.com/sitemap-index.xml
+Sitemap: https://el-pacto-ludico.web.app/sitemap-index.xml

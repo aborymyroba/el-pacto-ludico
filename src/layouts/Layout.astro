@@ -15,7 +15,7 @@ const {
   ogType = 'website',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://pactolvdico.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://el-pacto-ludico.web.app');
 const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pacto Lvdico`;
 ---
 
@@ -30,7 +30,7 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
     <!-- Open Graph -->
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.site ?? 'https://pactolvdico.com').href} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site ?? 'https://el-pacto-ludico.web.app').href} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="es_AR" />
@@ -40,7 +40,7 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site ?? 'https://pactolvdico.com').href} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site ?? 'https://el-pacto-ludico.web.app').href} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

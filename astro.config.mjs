@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pactolvdico.com',
+  site: 'https://el-pacto-ludico.web.app',
   vite: {
     plugins: [tailwindcss()],
   },
