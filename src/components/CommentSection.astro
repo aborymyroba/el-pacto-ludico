@@ -1,0 +1,189 @@
+---
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<div class="mt-16 pt-8 border-t border-border/50">
+  <h3 class="font-display text-xl text-foreground/60 mb-8 text-center tracking-wide">
+    Comentarios
+  </h3>
+
+  <!-- Comment Form -->
+  <form id="comment-form" class="mb-12 bg-card border border-border p-6">
+    <div class="mb-4">
+      <label for="comment-name" class="block text-sm text-foreground/60 mb-2 uppercase tracking-wider">
+        Nombre
+      </label>
+      <input
+        type="text"
+        id="comment-name"
+        name="name"
+        required
+        maxlength="50"
+        placeholder="Tu nombre"
+        class="w-full bg-background border border-border rounded px-4 py-3 text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary transition-colors"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="comment-message" class="block text-sm text-foreground/60 mb-2 uppercase tracking-wider">
+        Comentario
+      </label>
+      <textarea
+        id="comment-message"
+        name="message"
+        required
+        maxlength="2000"
+        rows="4"
+        placeholder="Escribí tu comentario..."
+        class="w-full bg-background border border-border rounded px-4 py-3 text-foreground placeholder-foreground/30 focus:outline-none focus:border-primary transition-colors resize-none"
+      ></textarea>
+    </div>
+    <div class="flex items-center justify-between">
+      <p id="comment-status" class="text-sm text-foreground/40"></p>
+      <button
+        type="submit"
+        id="comment-submit"
+        class="bg-primary text-primary-foreground px-6 py-2 text-sm uppercase tracking-wider font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+
+  <!-- Comments List -->
+  <div id="comments-list" class="space-y-6">
+    <p class="text-foreground/40 text-center text-sm">Cargando comentarios...</p>
+  </div>
+</div>
+
+<script is:inline define:vars={{ slug }}>
+  const COMMENT_SLUG = slug;
+
+  async function initComments() {
+    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js");
+    const { getFirestore, collection, query, where, addDoc, getDocs, serverTimestamp } = await import("https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js");
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCV26iDB1UBv0Y-n4R1zLBrlw9hMlV-EV0",
+      authDomain: "el-pacto-ludico.firebaseapp.com",
+      projectId: "el-pacto-ludico",
+      storageBucket: "el-pacto-ludico.firebasestorage.app",
+      messagingSenderId: "117302414675",
+      appId: "1:117302414675:web:6d27c07b01ab6dadaa25a6",
+      measurementId: "G-Q343XE10XL",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("comment-form");
+    const nameInput = document.getElementById("comment-name");
+    const messageInput = document.getElementById("comment-message");
+    const statusEl = document.getElementById("comment-status");
+    const submitBtn = document.getElementById("comment-submit");
+    const listEl = document.getElementById("comments-list");
+
+    async function loadComments() {
+      try {
+        const q = query(
+          collection(db, "comments"),
+          where("slug", "==", COMMENT_SLUG)
+        );
+        const snapshot = await getDocs(q);
+
+        if (snapshot.empty) {
+          listEl.innerHTML = '<p class="text-foreground/40 text-center text-sm">Sé el primero en comentar.</p>';
+          return;
+        }
+
+        const comments = [];
+        snapshot.forEach((doc) => {
+          comments.push({ id: doc.id, ...doc.data() });
+        });
+
+        comments.sort((a, b) => {
+          const ta = a.createdAt?.toMillis?.() || 0;
+          const tb = b.createdAt?.toMillis?.() || 0;
+          return ta - tb;
+        });
+
+        let html = "";
+        comments.forEach((c) => {
+          const date = c.createdAt?.toDate?.()
+            ? new Date(c.createdAt.toDate()).toLocaleDateString("es-AR", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })
+            : "";
+
+          html += `
+            <div class="bg-card border border-border p-6">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="font-display text-primary text-sm">${escapeHtml(c.name)}</span>
+                <span class="text-foreground/30 text-xs">${date}</span>
+              </div>
+              <p class="text-foreground/70 font-light leading-relaxed">${escapeHtml(c.message)}</p>
+            </div>
+          `;
+        });
+        listEl.innerHTML = html;
+      } catch (err) {
+        console.error("Error loading comments:", err);
+        listEl.innerHTML = '<p class="text-foreground/40 text-center text-sm">No se pudieron cargar los comentarios.</p>';
+      }
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = nameInput.value.trim();
+      const message = messageInput.value.trim();
+
+      if (!name || !message) return;
+
+      submitBtn.disabled = true;
+      statusEl.textContent = "Enviando...";
+      statusEl.className = "text-sm text-foreground/40";
+
+      try {
+        await addDoc(collection(db, "comments"), {
+          slug: COMMENT_SLUG,
+          name: name.substring(0, 50),
+          message: message.substring(0, 2000),
+          createdAt: serverTimestamp(),
+        });
+
+        nameInput.value = "";
+        messageInput.value = "";
+        statusEl.textContent = "Comentario enviado.";
+        statusEl.className = "text-sm text-primary";
+
+        await loadComments();
+      } catch (err) {
+        console.error("Error posting comment:", err);
+        statusEl.textContent = "Error al enviar. Intentá de nuevo.";
+        statusEl.className = "text-sm text-accent";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+
+    await loadComments();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initComments);
+  } else {
+    initComments();
+  }
+</script>

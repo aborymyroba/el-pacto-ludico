@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: comments
+    // Document ID: auto-generated
+    // Fields:
+    //   - slug: string (required, 1-200 chars) - path of the entrega
+    //   - name: string (required, 1-50 chars) - commenter name
+    //   - message: string (required, 1-2000 chars) - comment text
+    //   - createdAt: timestamp (server-set) - creation time
+    //
+    // ===============================================================
+
+    match /comments/{commentId} {
+      // Anyone can read comments
+      allow read: if true;
+
+      // Anyone can create comments with validation
+      allow create: if isValidComment();
+
+      // No client-side update or delete (admin via Firebase console)
+      allow update, delete: if false;
+    }
+
+    function isValidComment() {
+      let data = request.resource.data;
+      return data.keys().hasOnly(['slug', 'name', 'message', 'createdAt']) &&
+             data.slug is string && data.slug.size() > 0 && data.slug.size() <= 200 &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 50 &&
+             data.message is string && data.message.size() > 0 && data.message.size() <= 2000 &&
+             data.createdAt is timestamp;
+    }
+  }
+}

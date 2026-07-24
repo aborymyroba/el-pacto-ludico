@@ -17,6 +17,18 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Deployment
+
+When deploying, run these commands in sequence:
+
+```
+npm run build
+npx firebase-tools deploy
+git add -A && git commit -m "deploy: update" && git push
+```
+
+If any step fails, stop and report the error. Do not proceed to the next step.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
