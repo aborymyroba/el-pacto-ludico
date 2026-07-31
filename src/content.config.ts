@@ -10,4 +10,17 @@ const entregas = defineCollection({
   }),
 });
 
-export const collections = { entregas };
+const ecos = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/ecos' }),
+  schema: z.object({
+    titulo: z.string(),
+    numero: z.number(),
+    autor: z.string(),
+    anio: z.number(),
+    intro: z.string(),
+    catala: z.string(),
+    cierre: z.string(),
+  }),
+});
+
+export const collections = { entregas, ecos };

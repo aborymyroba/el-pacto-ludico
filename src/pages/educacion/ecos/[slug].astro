@@ -1,0 +1,155 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('ecos');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const roman = (n: number): string =>
+  ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][n - 1] ?? String(n);
+
+const pageTitle = `${d.titulo} — Ecos | El Pacto Lvdico`;
+---
+
+<Layout
+  title={pageTitle}
+  description={d.titulo}
+  ogType="article"
+>
+  <div class="pt-32 pb-24 min-h-screen bg-background relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="fixed top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+      <svg viewBox="0 0 100 100" fill="none" class="w-full h-full text-primary scale-150 transform translate-x-1/4 -translate-y-1/4">
+        <path d="M50 0 C60 40 100 50 100 50 C60 60 50 100 50 100 C40 60 0 50 0 50 C40 40 50 0 50 0 Z" fill="currentColor" />
+      </svg>
+    </div>
+
+    <article class="max-w-3xl mx-auto px-6 relative z-10">
+
+      <!-- Header -->
+      <header class="mb-8 text-center">
+        <h1 class="font-display text-4xl md:text-6xl text-foreground mb-4">
+          Educación
+        </h1>
+        <div class="w-16 h-1 bg-primary mx-auto mb-8"></div>
+
+        <!-- Tab Navigation -->
+        <nav class="flex justify-center gap-8 border-b border-border pb-4">
+          <a href="/educacion" class="text-sm tracking-widest uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px]">
+            Ecos
+          </a>
+        </nav>
+      </header>
+
+      <!-- Entry Header -->
+      <header class="mb-16 text-center border-b border-border/50 pb-12">
+        <div class="inline-flex items-center gap-3 px-4 py-2 border border-border bg-card rounded-full mb-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/80">
+            Educación · Ecos · Voz {roman(d.numero)}
+          </span>
+        </div>
+
+        <h2 class="font-display text-6xl md:text-8xl text-primary mb-4 capitalize tracking-tight">
+          {d.titulo}
+        </h2>
+
+        <p class="text-sm tracking-[0.2em] uppercase text-foreground/40 mb-8">
+          {d.autor} · {d.anio}
+        </p>
+
+        <!-- Language Switch -->
+        <div class="flex justify-center gap-3" role="group" aria-label="Idioma">
+          <button
+            id="lang-es"
+            class="rounded border border-primary p-1.5 transition-colors hover:border-primary"
+            aria-pressed="true"
+            aria-label="Español"
+            title="Español"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20" class="block">
+              <rect width="28" height="20" fill="#AA151B" />
+              <rect y="5" width="28" height="10" fill="#F1BF00" />
+            </svg>
+          </button>
+          <button
+            id="lang-ca"
+            class="rounded border border-border p-1.5 transition-colors hover:border-primary"
+            aria-pressed="false"
+            aria-label="Català"
+            title="Català"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="20" viewBox="0 0 28 20" class="block">
+              <rect width="28" height="20" fill="#FCDD09" />
+              <rect y="0" width="28" height="2.2" fill="#DA121A" />
+              <rect y="4.4" width="28" height="2.2" fill="#DA121A" />
+              <rect y="8.9" width="28" height="2.2" fill="#DA121A" />
+              <rect y="13.3" width="28" height="2.2" fill="#DA121A" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Spanish Poem -->
+      <div id="poem-es">
+        <div class="mb-14 text-center max-w-2xl mx-auto">
+          <p class="italic text-foreground/60 font-light leading-relaxed">
+            {d.intro}
+          </p>
+          <p class="mt-8 italic text-foreground/60 font-light">
+            {d.cierre}
+          </p>
+        </div>
+        <div class="prose prose-invert prose-xl max-w-none prose-p:text-foreground/80 prose-p:font-light prose-p:leading-relaxed prose-p:mb-10">
+          <Content />
+        </div>
+      </div>
+
+      <!-- Catalan Poem -->
+      <div id="poem-ca" class="hidden">
+        <p class="text-center text-sm italic text-foreground/50 mb-8">
+          Versió de Lluís Llach (versió per ser cantada).
+        </p>
+        <div class="whitespace-pre-line font-light leading-relaxed text-foreground/80">{d.catala}</div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 pt-8 border-t border-border/50 text-center">
+        <a href="/educacion" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-primary transition-colors">
+          ← Volver a Ecos
+        </a>
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<script is:inline>
+  const esBtn = document.getElementById('lang-es');
+  const caBtn = document.getElementById('lang-ca');
+  const esContent = document.getElementById('poem-es');
+  const caContent = document.getElementById('poem-ca');
+
+  function setLang(lang) {
+    const es = lang === 'es';
+    esContent.classList.toggle('hidden', !es);
+    caContent.classList.toggle('hidden', es);
+    esBtn.classList.toggle('border-primary', es);
+    esBtn.classList.toggle('border-border', !es);
+    caBtn.classList.toggle('border-primary', !es);
+    caBtn.classList.toggle('border-border', es);
+    esBtn.setAttribute('aria-pressed', String(es));
+    caBtn.setAttribute('aria-pressed', String(!es));
+  }
+
+  esBtn.addEventListener('click', () => setLang('es'));
+  caBtn.addEventListener('click', () => setLang('ca'));
+</script>

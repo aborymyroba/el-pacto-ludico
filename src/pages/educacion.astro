@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const entries = await getCollection('ecos');
+entries.sort((a, b) => a.data.numero - b.data.numero);
+
+const roman = (n: number): string =>
+  ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][n - 1] ?? String(n);
 ---
 
 <Layout
@@ -22,21 +29,46 @@ import Layout from '../layouts/Layout.astro';
           Educación
         </h1>
         <div class="w-16 h-1 bg-primary mx-auto mb-6"></div>
-        <p class="text-foreground/60 text-lg font-light leading-relaxed max-w-2xl mx-auto">
+        <p class="text-foreground/60 text-lg font-light leading-relaxed max-w-2xl mx-auto mb-8">
           El juego como herramienta de aprendizaje. Talleres, seminarios y academias lúdicas para formar mentes brillantes.
         </p>
+
+        <!-- Tab Navigation -->
+        <nav class="flex justify-center gap-8 border-b border-border pb-4">
+          <a href="/educacion" class="text-sm tracking-widest uppercase text-primary border-b-2 border-primary pb-4 -mb-[18px]">
+            Ecos
+          </a>
+        </nav>
       </header>
 
-      <!-- Content -->
-      <div class="flex flex-col items-center justify-center py-16">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary/40 mb-6">
-          <path d="M12 7v14"/>
-          <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>
-        </svg>
-        <h2 class="font-display text-2xl text-foreground/60 mb-3">Próximamente</h2>
-        <p class="text-foreground/40 text-center font-light leading-relaxed max-w-md">
-          Esta sección está en preparación. Volveremos con talleres, seminarios y programas de formación lúdica.
-        </p>
+      <!-- Voces List -->
+      <div class="mt-12">
+        {entries.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-foreground/40 text-lg">No hay voces disponibles aún.</p>
+          </div>
+        ) : (
+          <div class="grid gap-4">
+            {entries.map((entry) => (
+              <a
+                href={`/educacion/ecos/${entry.id}`}
+                class="group block bg-card border border-border p-6 hover:border-primary/50 transition-colors duration-300"
+              >
+                <div class="flex items-center gap-6">
+                  <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50 shrink-0">
+                    Voz {roman(entry.data.numero)}
+                  </span>
+                  <h2 class="font-display text-2xl text-primary group-hover:text-foreground transition-colors uppercase">
+                    {entry.data.titulo}
+                  </h2>
+                  <div class="ml-auto shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   </div>
