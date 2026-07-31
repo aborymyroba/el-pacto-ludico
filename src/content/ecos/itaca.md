@@ -79,12 +79,12 @@ Cuando emprendas tu viaje hacia Ítaca
 debes rogar que el viaje sea largo,  
 lleno de peripecias, lleno de experiencias.  
 No has de temer ni a los lestrigones ni a los cíclopes,  
-ni la cólera del airado Posidón.  
+ni la cólera del airado Poseidón.  
 Nunca tales monstruos hallarás en tu ruta  
 si tu pensamiento es elevado, si una exquisita  
 emoción penetra en tu alma y en tu cuerpo.  
 Los lestrigones y los cíclopes  
-y el feroz Posidón no podrán encontrarte  
+y el feroz Poseidón no podrán encontrarte  
 si tú no los llevas ya dentro, en tu alma,  
 si tu alma no los conjura ante ti.  
 

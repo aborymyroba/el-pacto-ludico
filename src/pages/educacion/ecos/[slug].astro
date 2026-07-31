@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import CommentSection from '../../../components/CommentSection.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -121,6 +122,9 @@ const pageTitle = `${d.titulo} — Ecos | El Pacto Lvdico`;
         </p>
         <div class="whitespace-pre-line font-light leading-relaxed text-foreground/80">{d.catala}</div>
       </div>
+
+      <!-- Comments -->
+      <CommentSection slug={`ecos/${entry.id}`} />
 
       <!-- Navigation -->
       <div class="mt-16 pt-8 border-t border-border/50 text-center">
