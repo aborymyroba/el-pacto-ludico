@@ -42,6 +42,7 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 - Bloque **«Última publicación»** automático: muestra la publicación más reciente de cualquier sección (etiqueta, palabra/título, fecha, extracto, botón «Leer»). Se actualiza en cada deploy sin tocarse a mano.
 - Sección **Presentación** (`#nosotros`) con el texto de presentación del creador → imagen `maldon.webp` (Juegos Maldón, optimizada de 2.5 MB a 130 KB) → texto de Juegos Maldón. Botón hero «La Orden» reparado.
 - Ajuste posterior: titular display grande y párrafos en columna angosta (`max-w-2xl`, `leading-loose`, `text-pretty`) para legibilidad.
+- Ajuste final (12/08): párrafos a todo el ancho del contenedor (igual que la imagen), con `text-pretty` (contra palabras huérfanas al final de línea) y `hyphens-auto` (quiebres limpios en español).
 
 ## Commits de referencia
 
