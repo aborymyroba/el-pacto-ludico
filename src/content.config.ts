@@ -18,6 +18,7 @@ const ecos = defineCollection({
     numero: z.number(),
     autor: z.string(),
     anio: z.number(),
+    fecha: z.coerce.date(),
     intro: z.string(),
     catala: z.string(),
     cierre: z.string(),

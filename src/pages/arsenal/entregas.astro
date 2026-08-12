@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { formatDate } from '../../lib/format';
+import { extractIntro } from '../../lib/extract';
 
 const entries = await getCollection('entregas');
 entries.sort((a, b) => a.data.numero - b.data.numero);
@@ -49,30 +50,38 @@ entries.sort((a, b) => a.data.numero - b.data.numero);
             <p class="text-foreground/40 text-lg">No hay entregas disponibles aún.</p>
           </div>
         ) : (
-          <div class="grid gap-4">
-            {entries.map((entry) => (
-              <a
-                href={`/arsenal/entregas/${entry.id}`}
-                class="group block bg-card border border-border p-6 hover:border-primary/50 transition-colors duration-300"
-              >
-                <div class="flex items-center gap-6">
-                  <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50 shrink-0">
-                    #{entry.data.numero}
-                  </span>
-                  <div class="flex-1">
-                    <h2 class="font-display text-2xl text-primary group-hover:text-foreground transition-colors">
-                      {entry.data.titulo}
-                    </h2>
-                    <p class="text-sm text-foreground/40 mt-1">
-                      {formatDate(entry.data.fecha)}
-                    </p>
+          <div>
+            <p class="text-center text-sm tracking-[0.2em] uppercase text-foreground/40 mb-8">
+              {entries.length} {entries.length === 1 ? 'entrega publicada' : 'entregas publicadas'}
+            </p>
+            <div class="grid gap-4">
+              {entries.map((entry) => (
+                <a
+                  href={`/arsenal/entregas/${entry.id}`}
+                  class="group block bg-card border border-border p-6 hover:border-primary/50 transition-colors duration-300"
+                >
+                  <div class="flex items-center gap-6">
+                    <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/50 shrink-0">
+                      #{entry.data.numero}
+                    </span>
+                    <div class="flex-1">
+                      <h2 class="font-display text-2xl text-primary group-hover:text-foreground transition-colors">
+                        {entry.data.titulo}
+                      </h2>
+                      <p class="text-sm text-foreground/40 mt-1">
+                        {formatDate(entry.data.fecha)}
+                      </p>
+                      <p class="text-foreground/60 text-sm font-light leading-relaxed mt-3">
+                        {extractIntro(entry.body)}
+                      </p>
+                    </div>
+                    <div class="ml-auto shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
                   </div>
-                  <div class="ml-auto shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary opacity-0 group-hover:opacity-100 transition-opacity"><path d="m9 18 6-6-6-6"/></svg>
-                  </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>

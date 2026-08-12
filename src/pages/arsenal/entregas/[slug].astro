@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import CommentSection from '../../../components/CommentSection.astro';
+import WhatsAppCta from '../../../components/WhatsAppCta.astro';
 import { getCollection, render } from 'astro:content';
 import { formatDate } from '../../../lib/format';
 
@@ -15,6 +16,12 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
+
+const allEntries = await getCollection('entregas');
+allEntries.sort((a, b) => a.data.numero - b.data.numero);
+const entryIndex = allEntries.findIndex((e) => e.id === entry.id);
+const prevEntry = entryIndex > 0 ? allEntries[entryIndex - 1] : null;
+const nextEntry = entryIndex >= 0 && entryIndex < allEntries.length - 1 ? allEntries[entryIndex + 1] : null;
 
 const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pacto Lúdico`;
 ---
@@ -77,14 +84,45 @@ const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pact
         <Content />
       </div>
 
+      <!-- WhatsApp CTA -->
+      <div class="mt-16">
+        <WhatsAppCta titulo={d.titulo} />
+      </div>
+
       <!-- Comments -->
       <CommentSection slug={entry.id} />
 
       <!-- Navigation -->
-      <div class="mt-16 pt-8 border-t border-border/50 text-center">
-        <a href="/arsenal/entregas" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-primary transition-colors">
-          ← Volver a Entregas
-        </a>
+      <div class="mt-16 pt-8 border-t border-border/50">
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          {prevEntry ? (
+            <a
+              href={`/arsenal/entregas/${prevEntry.id}`}
+              class="block bg-card border border-border p-6 hover:border-primary/50 transition-colors duration-300"
+            >
+              <span class="text-xs tracking-[0.2em] uppercase text-foreground/40">← Anterior</span>
+              <p class="font-display text-xl text-primary mt-2">{prevEntry.data.palabra}</p>
+            </a>
+          ) : (
+            <div></div>
+          )}
+          {nextEntry ? (
+            <a
+              href={`/arsenal/entregas/${nextEntry.id}`}
+              class="block bg-card border border-border p-6 hover:border-primary/50 transition-colors duration-300 text-right"
+            >
+              <span class="text-xs tracking-[0.2em] uppercase text-foreground/40">Siguiente →</span>
+              <p class="font-display text-xl text-primary mt-2">{nextEntry.data.palabra}</p>
+            </a>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        <div class="text-center">
+          <a href="/arsenal/entregas" class="text-sm tracking-widest uppercase text-foreground/50 hover:text-primary transition-colors">
+            ← Volver a Entregas
+          </a>
+        </div>
       </div>
     </article>
   </div>

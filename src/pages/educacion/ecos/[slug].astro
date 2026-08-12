@@ -1,7 +1,9 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import CommentSection from '../../../components/CommentSection.astro';
+import WhatsAppCta from '../../../components/WhatsAppCta.astro';
 import { getCollection, render } from 'astro:content';
+import { formatDate } from '../../../lib/format';
 
 export async function getStaticPaths() {
   const entries = await getCollection('ecos');
@@ -64,8 +66,12 @@ const pageTitle = `${d.titulo} — Ecos | El Pacto Lúdico`;
           {d.titulo}
         </h2>
 
-        <p class="text-sm tracking-[0.2em] uppercase text-foreground/40 mb-8">
+        <p class="text-sm tracking-[0.2em] uppercase text-foreground/40 mb-4">
           {d.autor} · {d.anio}
+        </p>
+
+        <p class="text-sm tracking-[0.2em] uppercase text-foreground/40">
+          Publicado el {formatDate(d.fecha)}
         </p>
 
         <!-- Language Switch -->
@@ -121,6 +127,11 @@ const pageTitle = `${d.titulo} — Ecos | El Pacto Lúdico`;
           Versió de Lluís Llach (versió per ser cantada).
         </p>
         <div class="whitespace-pre-line font-light leading-relaxed text-foreground/80">{d.catala}</div>
+      </div>
+
+      <!-- WhatsApp CTA -->
+      <div class="mt-16">
+        <WhatsAppCta titulo={d.titulo} />
       </div>
 
       <!-- Comments -->

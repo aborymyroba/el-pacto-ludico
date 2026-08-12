@@ -3,6 +3,7 @@ numero: 1
 titulo: "Ítaca"
 autor: "Konstantínos Kaváfis"
 anio: 1911
+fecha: 2026-07-31
 intro: |
   Es un texto que nos recuerda que el verdadero valor de un viaje no reside únicamente en alcanzar el destino, sino en todo aquello que aprendemos, descubrimos y llegamos a ser mientras avanzamos hacia él.
 

@@ -1,0 +1,39 @@
+---
+import { CANAL_WHATSAPP } from '../lib/constantes';
+
+interface Props {
+  titulo?: string;
+}
+
+const { titulo } = Astro.props;
+
+const url = new URL(Astro.url.pathname, Astro.site ?? 'https://el-pacto-ludico.web.app').href;
+const shareText = `Comprender la realidad con mayor claridad, nombrarla con mayor exactitud y comunicarla con mayor honestidad. ${titulo}: ${url}`;
+const shareUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+---
+
+<div class="bg-card border border-border p-8">
+  <div class="flex flex-col items-center gap-6 text-center">
+    <slot />
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href={CANAL_WHATSAPP}
+        target="_blank"
+        rel="noopener"
+        class="px-6 py-3 bg-primary text-primary-foreground font-display tracking-widest uppercase text-sm font-semibold hover:bg-white hover:text-primary-foreground transition-colors duration-300"
+      >
+        Únete al canal de WhatsApp
+      </a>
+      {titulo && (
+        <a
+          href={shareUrl}
+          target="_blank"
+          rel="noopener"
+          class="px-6 py-3 border border-border text-foreground font-display tracking-widest uppercase text-sm hover:border-primary hover:text-primary transition-colors duration-300"
+        >
+          Compartir
+        </a>
+      )}
+    </div>
+  </div>
+</div>
