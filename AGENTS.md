@@ -1,3 +1,7 @@
+## Project Memory (READ FIRST)
+
+Before any task on this site, read `docs/memoria.md`. It preserves decisions, implemented/deployed work, technical notes, pending phases, and the copy provided by the creator. Update it after finishing each work session.
+
 ## Project Workflow
 
 This project has two clear roles:
