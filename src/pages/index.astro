@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../lib/format';
+import { todasLasPublicaciones } from '../lib/publicaciones';
+
+const entregas = await getCollection('entregas');
+const ecos = await getCollection('ecos');
+const publicaciones = todasLasPublicaciones(entregas, ecos);
+const ultimaPublicacion = publicaciones[0] ?? null;
 
 const chevronRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
 const circleDollar = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary mx-auto mb-8 opacity-50"><circle cx="12" cy="12" r="10"/><path d="m16 10-4 4-4-4"/></svg>';
@@ -79,6 +87,78 @@ const pillars = [
             La Orden
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Última publicación -->
+  {ultimaPublicacion && (
+    <section class="py-24 bg-background">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="bg-card border border-border p-10">
+          <div class="flex items-center gap-3 mb-8">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-xs uppercase tracking-[0.2em] text-primary">
+              Última publicación
+            </span>
+          </div>
+
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-xs tracking-[0.2em] uppercase font-semibold text-foreground/40">
+              {ultimaPublicacion.etiqueta}
+            </span>
+            <span class="text-foreground/30 text-xs">·</span>
+            <span class="text-xs tracking-[0.2em] uppercase text-foreground/40">
+              {formatDate(ultimaPublicacion.fecha)}
+            </span>
+          </div>
+
+          <h2 class="font-display text-4xl md:text-6xl text-primary mb-6 tracking-tight capitalize">
+            {ultimaPublicacion.palabra ?? ultimaPublicacion.titulo}
+          </h2>
+
+          <p class="text-foreground/60 font-light leading-relaxed mb-10 max-w-2xl">
+            {ultimaPublicacion.extracto}
+          </p>
+
+          <a
+            href={ultimaPublicacion.ruta}
+            class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-display tracking-widest uppercase text-sm font-semibold hover:bg-white hover:text-primary-foreground transition-colors duration-300"
+          >
+            Leer <span set:html={chevronRight} />
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Presentación -->
+  <section id="nosotros" class="py-24 bg-card border-y border-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-xs tracking-[0.2em] uppercase text-primary text-center mb-12">
+        Presentación
+      </p>
+
+      <div class="text-xl text-foreground/70 font-light leading-relaxed space-y-6 mb-16">
+        <p>
+          Como iremos descubriendo, los juegos no son únicamente cosa de niños. Han acompañado al ser humano desde las primeras civilizaciones y, a lo largo de la historia, han servido como herramientas de aprendizaje dentro de entornos definidos por reglas y objetivos. Pero jugar es mucho más que entretenerse: es explorar posibilidades, asumir retos, imaginar, aprender y relacionarnos con los demás.
+        </p>
+        <p>
+          Jugar no es evadirse de la vida, sino una forma particular de vivirla. Podemos hacerlo moviendo piezas, asumiendo personajes, resolviendo problemas o explorando las posibilidades del lenguaje. Siempre hay en el juego algo que nos entretiene, algo que nos enseña y, sobre todo, algo que amplía nuestra manera de mirar y comprender el mundo.
+        </p>
+      </div>
+
+      <img
+        src="/images/maldon.webp"
+        alt="Imagen de la presentación de El Pacto Lúdico"
+        class="w-full h-auto border border-border mb-16"
+        loading="lazy"
+      />
+
+      <div class="text-xl text-foreground/70 font-light leading-relaxed">
+        <p>
+          Conocimos esta frase a través de Juegos Maldón, donde aparece como una de las ideas que inspiraron su proyecto. La encuentro especialmente apropiada para este lugar: porque jugar no pertenece a una edad determinada. Es una forma de explorar, aprender, crear, compartir y mantener abierta nuestra manera de mirar el mundo.
+        </p>
       </div>
     </div>
   </section>
