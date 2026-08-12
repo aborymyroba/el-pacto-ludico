@@ -2,6 +2,7 @@
 titulo: "Entrega III · Preterir"
 palabra: "Preterir"
 numero: 3
+fecha: 2026-08-07
 ---
 
 ## Una palabra para observar

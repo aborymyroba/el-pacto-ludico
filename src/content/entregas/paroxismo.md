@@ -2,6 +2,7 @@
 titulo: "Entrega I · Paroxismo"
 palabra: "Paroxismo"
 numero: 1
+fecha: 2026-07-24
 ---
 
 ## Una palabra para observar

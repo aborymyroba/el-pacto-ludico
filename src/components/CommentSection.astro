@@ -113,7 +113,7 @@ const { slug } = Astro.props;
         let html = "";
         comments.forEach((c) => {
           const date = c.createdAt?.toDate?.()
-            ? new Date(c.createdAt.toDate()).toLocaleDateString("es-AR", {
+            ? new Date(c.createdAt.toDate()).toLocaleDateString("es-CO", {
                 day: "numeric",
                 month: "long",
                 year: "numeric",

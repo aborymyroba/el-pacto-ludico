@@ -7,6 +7,7 @@ const entregas = defineCollection({
     titulo: z.string(),
     palabra: z.string(),
     numero: z.number(),
+    fecha: z.coerce.date(),
   }),
 });
 

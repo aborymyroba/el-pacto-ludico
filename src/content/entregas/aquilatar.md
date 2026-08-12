@@ -2,6 +2,7 @@
 titulo: "Entrega II · Aquilatar"
 palabra: "Aquilatar"
 numero: 2
+fecha: 2026-07-31
 ---
 
 ## Una palabra para observar

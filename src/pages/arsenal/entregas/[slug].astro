@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import CommentSection from '../../../components/CommentSection.astro';
 import { getCollection, render } from 'astro:content';
+import { formatDate } from '../../../lib/format';
 
 export async function getStaticPaths() {
   const entries = await getCollection('entregas');
@@ -15,7 +16,7 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 
-const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pacto Lvdico`;
+const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pacto Lúdico`;
 ---
 
 <Layout
@@ -66,6 +67,9 @@ const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pact
         <h2 class="font-display text-6xl md:text-8xl text-primary mb-6 capitalize tracking-tight">
           {d.palabra}
         </h2>
+        <p class="text-sm tracking-[0.2em] uppercase text-foreground/40">
+          {formatDate(d.fecha)}
+        </p>
       </header>
 
       <!-- Content Body -->

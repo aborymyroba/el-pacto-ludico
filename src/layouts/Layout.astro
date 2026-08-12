@@ -16,7 +16,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://el-pacto-ludico.web.app');
-const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pacto Lvdico`;
+const fullTitle = title.includes('El Pacto Lúdico') ? title : `${title} | El Pacto Lúdico`;
 ---
 
 <html lang="es">
@@ -33,8 +33,8 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
     <meta property="og:image" content={new URL(ogImage, Astro.site ?? 'https://el-pacto-ludico.web.app').href} />
     <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content="es_AR" />
-    <meta property="og:site_name" content="El Pacto Lvdico" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="El Pacto Lúdico" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -61,7 +61,7 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
       <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3 group">
           <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary transition-transform duration-500 group-hover:rotate-180 bg-background/50">
-            <img src="/images/coin.webp" alt="El Pacto Lvdico" class="w-full h-full object-cover" width="40" height="40" />
+            <img src="/images/coin.webp" alt="El Pacto Lúdico" class="w-full h-full object-cover" width="40" height="40" />
           </div>
           <span class="font-display font-semibold tracking-widest text-xl uppercase text-foreground group-hover:text-primary transition-colors">
             El Pacto Lvdico
@@ -113,7 +113,7 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
         <div class="grid md:grid-cols-4 gap-12 mb-16">
           <div class="col-span-1 md:col-span-2">
             <div class="flex items-center gap-3 mb-6">
-              <img src="/images/coin.webp" alt="El Pacto Lvdico" class="w-8 h-8 rounded-full object-cover border border-primary" width="32" height="32" />
+              <img src="/images/coin.webp" alt="El Pacto Lúdico" class="w-8 h-8 rounded-full object-cover border border-primary" width="32" height="32" />
               <span class="font-display text-2xl tracking-widest uppercase text-foreground">
                 El Pacto Lvdico
               </span>
@@ -150,7 +150,7 @@ const fullTitle = title.includes('El Pacto Lvdico') ? title : `${title} | El Pac
 
         <div class="pt-8 border-t border-border text-xs uppercase tracking-widest text-foreground/40">
           <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} El Pacto Lvdico. Todos los derechos reservados.</p>
+            <p>&copy; {new Date().getFullYear()} El Pacto Lúdico. Todos los derechos reservados.</p>
             <div class="flex gap-4">
               <a href="#" class="hover:text-primary transition-colors">Privacidad</a>
               <a href="#" class="hover:text-primary transition-colors">Términos</a>
