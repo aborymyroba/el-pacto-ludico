@@ -1,6 +1,6 @@
 # Memoria del proceso — El Pacto Lúdico
 
-Fecha de la última actualización: 12 de agosto de 2026.
+Fecha de la última actualización: 21 de agosto de 2026.
 Este documento preserva el estado del proyecto, las decisiones tomadas y lo que queda pendiente para retomarlo con continuidad.
 
 ## Contexto
@@ -44,6 +44,14 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 - Ajuste posterior: titular display grande y párrafos en columna angosta (`max-w-2xl`, `leading-loose`, `text-pretty`) para legibilidad.
 - Ajuste final (12/08): párrafos a todo el ancho del contenedor (igual que la imagen), con `text-pretty` (contra palabras huérfanas al final de línea) y `hyphens-auto` (quiebres limpios en español).
 
+## Recuperación post-pérdida (21/08/2026)
+
+- **Contexto:** la máquina original de trabajo se perdió. Este directorio es un clon fresco de GitHub; la Entrega IV se creó y desplegó desde la máquina perdida sin quedar commiteada (producción quedó adelantada al repo).
+- **Recuperado:** `src/content/entregas/aquiescencia.md` reconstruida con fidelidad total desde el sitio en producción (frontmatter + contenido íntegro). Auditoría byte a byte: las 12 páginas quedaron idénticas a producción.
+- **Limpieza de assets (~29 MB):** eliminados de `public/images/` archivos de trabajo sin uso: `hero-colosseum.kra` (fuente de Krita), `hero-colosseum.png`, `.png~`, `.jpg~` y `pillar-{educacion,literatura,mesa,rol}.jpg` (sección antigua). Quedan solo los 4 archivos en uso + `coin.ico`.
+- **Nuevo contexto de trabajo:** este repo es la única fuente de verdad. Regla: nada se considera publicado hasta estar committeado y pusheado.
+- **Flujo para recuperar contenido futuro:** si existe en producción, dar la URL y reconstruir el `.md` desde ahí (los Ecos piden `numero`, `autor`, `anio`, `intro`, `catala`, `cierre` — todos extraíbles de la página publicada); si el creador tiene el texto, pegarlo e integrarlo al formato del proyecto.
+
 ## Commits de referencia
 
 | Commit | Contenido |
@@ -56,6 +64,7 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 ## Notas técnicas útiles
 
 - **Fecha en content collections:** el frontmatter YAML parsea `2026-07-24` como `Date`. El schema usa `z.coerce.date()` y `formatDate` (en `src/lib/format.ts`) reconstruye la fecha local desde componentes UTC para evitar el corrimiento de huso (Bogotá, -5).
+- **Tailwind 4 escanea todo el proyecto** (salvo lo gitignoreado y binarios conocidos): archivos con extensiones raras (`.kra`, `.png~`) pueden generar clases fantasma en el CSS. Tras la limpieza de assets el hash del CSS cambió (desapareció una clase `.h-3` accidental, sin uso real). No alarmarse por cambios de hash del CSS entre builds.
 - **`src/lib/publicaciones.ts`** centraliza todas las publicaciones (hoy `entregas` y `ecos`) con etiqueta, fecha, extracto y ruta. Al agregar una sección nueva, se registra allí y el bloque de la home la reconoce sola.
 - **`src/lib/extract.ts`** extrae el primer párrafo del markdown (sin sintaxis, truncado ~180 caracteres).
 - **`src/lib/constantes.ts`** guarda `CANAL_WHATSAPP`.
