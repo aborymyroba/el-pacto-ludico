@@ -38,6 +38,16 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
   - **Canal:** `https://whatsapp.com/channel/0029VbCpKhm4o7qDlKVpYo3I`
   - Mensaje de compartir (arma solo título + enlace): «Comprender la realidad con mayor claridad, nombrarla con mayor exactitud y comunicarla con mayor honestidad. {título}: {enlace}»
 
+### Entregas del Arsenal en producción
+
+| # | Palabra | Fecha | Slug |
+|---|---|---|---|
+| I | Paroxismo | 2026-07-24 | `paroxismo` |
+| II | Aquilatar | 2026-07-31 | `aquilatar` |
+| III | Preterir | 2026-08-07 | `preterir` |
+| IV | Aquiescencia | 2026-08-14 | `aquiescencia` |
+| V | Elucidar | 2026-08-21 | `elucidar` |
+
 ### Fase C — Home que vive
 - Bloque **«Última publicación»** automático: muestra la publicación más reciente de cualquier sección (etiqueta, palabra/título, fecha, extracto, botón «Leer»). Se actualiza en cada deploy sin tocarse a mano.
 - Sección **Presentación** (`#nosotros`) con el texto de presentación del creador → imagen `maldon.webp` (Juegos Maldón, optimizada de 2.5 MB a 130 KB) → texto de Juegos Maldón. Botón hero «La Orden» reparado.
@@ -51,6 +61,7 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 - **Limpieza de assets (~29 MB):** eliminados de `public/images/` archivos de trabajo sin uso: `hero-colosseum.kra` (fuente de Krita), `hero-colosseum.png`, `.png~`, `.jpg~` y `pillar-{educacion,literatura,mesa,rol}.jpg` (sección antigua). Quedan solo los 4 archivos en uso + `coin.ico`.
 - **Nuevo contexto de trabajo:** este repo es la única fuente de verdad. Regla: nada se considera publicado hasta estar committeado y pusheado.
 - **Flujo para recuperar contenido futuro:** si existe en producción, dar la URL y reconstruir el `.md` desde ahí (los Ecos piden `numero`, `autor`, `anio`, `intro`, `catala`, `cierre` — todos extraíbles de la página publicada); si el creador tiene el texto, pegarlo e integrarlo al formato del proyecto.
+- **Credenciales restablecidas en la máquina nueva:** Firebase login (`aborymyroba@gmail.com`) y push a GitHub con token clásico (permiso `repo`). **Ojo:** el creador tiene dos cuentas de GitHub — el repo es de `aborymyroba`; los tokens deben crearse con sesión iniciada como `aborymyroba` (el token hecho desde la otra cuenta, `fportizabg-glitch`, da 403 al pushear).
 
 ## Commits de referencia
 
@@ -60,6 +71,8 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 | `acc6146` | Fecha en Ecos, base de serie y canal WhatsApp |
 | `580aa55` | Fase C: última publicación + presentación |
 | `b83743c` | Ajustes de presentación |
+| `7895c4e` | Recuperación post-pérdida: Entrega IV + limpieza de assets |
+| `f5399ef` | Entrega V Elucidar (incluye `.gitignore` para `firebase-debug.log`) |
 
 ## Notas técnicas útiles
 
