@@ -1,5 +1,6 @@
 # firebase
 .firebase/
+firebase-debug.log
 
 # build output
 dist/
