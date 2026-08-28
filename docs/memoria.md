@@ -1,6 +1,6 @@
 # Memoria del proceso — El Pacto Lúdico
 
-Fecha de la última actualización: 21 de agosto de 2026.
+Fecha de la última actualización: 28 de agosto de 2026.
 Este documento preserva el estado del proyecto, las decisiones tomadas y lo que queda pendiente para retomarlo con continuidad.
 
 ## Contexto
@@ -47,6 +47,23 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 | III | Preterir | 2026-08-07 | `preterir` |
 | IV | Aquiescencia | 2026-08-14 | `aquiescencia` |
 | V | Elucidar | 2026-08-21 | `elucidar` |
+| Interludio I | La devaluación de la palabra (El efecto Tû-Tû) | 2026-08-28 | `interludio-i` |
+
+### Ecos en producción
+
+| # | Voz | Fecha | Slug |
+|---|---|---|---|
+| I | Ítaca | 2026-07-31 | `itaca` |
+| II | El territorio encogido (El peligro de la Neolengua) | 2026-08-28 | `el-territorio-encogido` |
+
+### Interludios y publicaciones complementarias
+
+- **Interludio I** (Arsenal): pequeña ruptura/paréntesis respecto a la cadencia de las entregas regulares. Se presenta con denominación «Interludio N» + título propio (no palabra suelta). Tras él se retoma la cadencia normal de entregas hasta el siguiente interludio (Interludio II previsto).
+- **Eco II** (Educación): ensayo propio en prosa (no poema ajeno). No requiere autor/año ni versión catalana/selector de idioma, solo estética coherente con los Ecos.
+- **Navegación cruzada:** ambas publicaciones se enlazan mutuamente desde su párrafo final (Interludio I ↔ Eco II). El párrafo final de cada entrega/eco se usa como puente hacia la otra sección.
+- **Título del Interludio en la cabecera:** se muestra en 3 líneas («Interludio I» / «La devaluación de la palabra» / «(El efecto Tû-Tû)»), con la línea central forzada a una línea (`whitespace-nowrap`) y tamaños reducidos para armonizar. Las entregas regulares siguen mostrando solo la `palabra`.
+- **Título del Eco II en la cabecera:** en 2 líneas («El territorio encogido» / «(El peligro de la Neolengua)»).
+- **Detectar interludio vs entrega regular en `[slug].astro` del Arsenal:** si `titulo` empieza por «Interludio». Detectar ensayo vs poema en Ecos: si el título contiene «(».
 
 ### Fase C — Home que vive
 - Bloque **«Última publicación»** automático: muestra la publicación más reciente de cualquier sección (etiqueta, palabra/título, fecha, extracto, botón «Leer»). Se actualiza en cada deploy sin tocarse a mano.
@@ -73,12 +90,16 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 | `b83743c` | Ajustes de presentación |
 | `7895c4e` | Recuperación post-pérdida: Entrega IV + limpieza de assets |
 | `f5399ef` | Entrega V Elucidar (incluye `.gitignore` para `firebase-debug.log`) |
+| `35eec7b` | docs: memoria — Entrega V desplegada y credenciales restablecidas |
+| (otorgado al desplegar) | Interludio I (Arsenal) + Eco II (Educación) con navegación cruzada |
 
 ## Notas técnicas útiles
 
 - **Fecha en content collections:** el frontmatter YAML parsea `2026-07-24` como `Date`. El schema usa `z.coerce.date()` y `formatDate` (en `src/lib/format.ts`) reconstruye la fecha local desde componentes UTC para evitar el corrimiento de huso (Bogotá, -5).
 - **Tailwind 4 escanea todo el proyecto** (salvo lo gitignoreado y binarios conocidos): archivos con extensiones raras (`.kra`, `.png~`) pueden generar clases fantasma en el CSS. Tras la limpieza de assets el hash del CSS cambió (desapareció una clase `.h-3` accidental, sin uso real). No alarmarse por cambios de hash del CSS entre builds.
 - **`src/lib/publicaciones.ts`** centraliza todas las publicaciones (hoy `entregas` y `ecos`) con etiqueta, fecha, extracto y ruta. Al agregar una sección nueva, se registra allí y el bloque de la home la reconoce sola.
+- **Esquema de `ecos` con campos opcionales:** `autor`, `anio`, `intro`, `catala` y `cierre` son opcionales, para admitir tanto poemas ajenos bilingües (Ítaca) como ensayos propios solo en español (Eco II). La página de detalle oculta autor/año, selector de idioma y bloque intro/cierre cuando no existen (y protege el script de idioma).
+- **Extracto de ecos con fallback:** si el eco no tiene `intro`, `publicaciones.ts` extrae el extracto del `body` del markdown.
 - **`src/lib/extract.ts`** extrae el primer párrafo del markdown (sin sintaxis, truncado ~180 caracteres).
 - **`src/lib/constantes.ts`** guarda `CANAL_WHATSAPP`.
 - **Deploy:** `npm run build` → `npx firebase-tools deploy` → commit + push. Si un paso falla, detener.

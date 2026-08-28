@@ -16,12 +16,12 @@ const ecos = defineCollection({
   schema: z.object({
     titulo: z.string(),
     numero: z.number(),
-    autor: z.string(),
-    anio: z.number(),
+    autor: z.string().optional(),
+    anio: z.number().optional(),
     fecha: z.coerce.date(),
-    intro: z.string(),
-    catala: z.string(),
-    cierre: z.string(),
+    intro: z.string().optional(),
+    catala: z.string().optional(),
+    cierre: z.string().optional(),
   }),
 });
 

@@ -23,6 +23,14 @@ const entryIndex = allEntries.findIndex((e) => e.id === entry.id);
 const prevEntry = entryIndex > 0 ? allEntries[entryIndex - 1] : null;
 const nextEntry = entryIndex >= 0 && entryIndex < allEntries.length - 1 ? allEntries[entryIndex + 1] : null;
 
+const esInterludio = d.titulo.toLowerCase().startsWith('interludio');
+
+const interludioTitulo = {
+  linea1: 'Interludio I',
+  linea2: 'La devaluación de la palabra',
+  linea3: '(El efecto Tû-Tû)',
+};
+
 const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pacto Lúdico`;
 ---
 
@@ -71,9 +79,17 @@ const pageTitle = `${d.titulo} — Arsenal de Precisión Lingüística | El Pact
           </span>
         </div>
 
-        <h2 class="font-display text-6xl md:text-8xl text-primary mb-6 capitalize tracking-tight">
-          {d.palabra}
-        </h2>
+        {esInterludio ? (
+          <h2 class="font-display text-3xl md:text-5xl text-primary tracking-tight leading-tight mb-6">
+            <span class="block text-2xl md:text-4xl mb-2">{interludioTitulo.linea1}</span>
+            <span class="block whitespace-nowrap">{interludioTitulo.linea2}</span>
+            <span class="block text-xl md:text-3xl mt-2">{interludioTitulo.linea3}</span>
+          </h2>
+        ) : (
+          <h2 class="font-display text-6xl md:text-8xl text-primary mb-6 capitalize tracking-tight">
+            {d.palabra}
+          </h2>
+        )}
         <p class="text-sm tracking-[0.2em] uppercase text-foreground/40">
           {formatDate(d.fecha)}
         </p>

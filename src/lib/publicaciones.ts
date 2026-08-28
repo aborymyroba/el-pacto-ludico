@@ -33,7 +33,7 @@ export function todasLasPublicaciones(entregas: Entrega[], ecos: Eco[]): Publica
       etiqueta: 'Educación',
       titulo: entry.data.titulo,
       fecha: entry.data.fecha,
-      extracto: extractIntro(entry.data.intro),
+      extracto: entry.data.intro ? extractIntro(entry.data.intro) : extractIntro(entry.body),
       ruta: `/educacion/ecos/${entry.id}`,
     })),
   ];
