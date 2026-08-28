@@ -65,6 +65,12 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 - **Título del Eco II en la cabecera:** en 2 líneas («El territorio encogido» / «(El peligro de la Neolengua)»).
 - **Detectar interludio vs entrega regular en `[slug].astro` del Arsenal:** si `titulo` empieza por «Interludio». Detectar ensayo vs poema en Ecos: si el título contiene «(».
 
+### Envío al grupo (cada viernes)
+
+- El aviso semanal del viernes va al **canal de WhatsApp** con el mensaje preparado por el creador (ver «Copy provisto» abajo). Es un texto de presentación de la(s) publicación(es) con los enlaces directos.
+- **Logo para el mensaje:** el logo del sitio (moneda/escudo romano) es `public/images/coin.webp` (400×398 px, transparencia, 186 KB), también publicado en `https://el-pacto-ludico.web.app/images/coin.webp`. Se adjunta como imagen al inicio del mensaje del grupo (WhatsApp no muestra previsualización con varios enlaces). El `coin.ico` es solo favicon (64 px, no apto para mensajes).
+- Para la entrega doble Interludio I + Eco II se usó un mensaje que conecta la devaluación y el recorte del pensamiento, referenciando a Alf Ross y Orwell, con ambos enlaces y cierre sobre la precisión lingüística.
+
 ### Fase C — Home que vive
 - Bloque **«Última publicación»** automático: muestra la publicación más reciente de cualquier sección (etiqueta, palabra/título, fecha, extracto, botón «Leer»). Se actualiza en cada deploy sin tocarse a mano.
 - Sección **Presentación** (`#nosotros`) con el texto de presentación del creador → imagen `maldon.webp` (Juegos Maldón, optimizada de 2.5 MB a 130 KB) → texto de Juegos Maldón. Botón hero «La Orden» reparado.
@@ -118,3 +124,15 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 - **Presentación (bloque 2):** «Jugar no es evadirse de la vida, sino una forma particular de vivirla. Podemos hacerlo moviendo piezas, asumiendo personajes, resolviendo problemas o explorando las posibilidades del lenguaje. Siempre hay en el juego algo que nos entretiene, algo que nos enseña y, sobre todo, algo que amplía nuestra manera de mirar y comprender el mundo.»
 - **Presentación (bloque 3, Juegos Maldón):** «Conocimos esta frase a través de Juegos Maldón, donde aparece como una de las ideas que inspiraron su proyecto. La encuentro especialmente apropiada para este lugar: porque jugar no pertenece a una edad determinada. Es una forma de explorar, aprender, crear, compartir y mantener abierta nuestra manera de mirar el mundo.»
 - **Bloque home del canal:** «Sigamos construyendo conocimiento, únete al canal y no te pierdas ninguna publicación.»
+
+### Mensaje del grupo — entrega doble Interludio I + Eco II (28/08/2026)
+
+> El lenguaje está vivo, pero a veces sufre de los mismos males que la economía. Esta semana hacemos un interludio en el Arsenal para conectar dos fenómenos de la misma categoría, pero con síntomas opuestos: la devaluación y el recorte del pensamiento.
+> Para desenredar este nudo, nos apoyamos en las ideas de dos autores que analizan magistralmente estos procesos: el filósofo Alf Ross y el novelista George Orwell.
+> Hemos preparado una entrega doble que conecta la lingüística, la filosofía y la educación, diseñada para leerse en un café de 5 minutos:
+> 1. En Arsenal: La devaluación de la palabra (El efecto Tû-Tû). Cómo usamos palabras comodín que se inflan hasta quedar completamente huecas.
+> 👉 https://el-pacto-ludico.web.app/arsenal/entregas/interludio-i/
+> 2. En Educación: El territorio encogido (El peligro de la Neolengua). Cómo el desierto de nuestro vocabulario termina por achicar nuestra mente.
+> 👉 https://el-pacto-ludico.web.app/educacion/ecos/el-territorio-encogido/
+> Al final, la precisión lingüística no es un capricho elegante; es la única herramienta para evitar que nuestro mapa mental se borre.
+> ¡Buena lectura y hasta la próxima!
