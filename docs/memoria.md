@@ -91,7 +91,7 @@ Este documento preserva el estado del proyecto, las decisiones tomadas y lo que 
 | `7895c4e` | Recuperación post-pérdida: Entrega IV + limpieza de assets |
 | `f5399ef` | Entrega V Elucidar (incluye `.gitignore` para `firebase-debug.log`) |
 | `35eec7b` | docs: memoria — Entrega V desplegada y credenciales restablecidas |
-| (otorgado al desplegar) | Interludio I (Arsenal) + Eco II (Educación) con navegación cruzada |
+| `86bd89b` | deploy: Interludio I (Arsenal) y Eco II (Educación) con navegación cruzada |
 
 ## Notas técnicas útiles
 
